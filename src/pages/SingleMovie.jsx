@@ -12,6 +12,8 @@ import { useThemeState } from "../states/themeState";
 // import SkeletonMovieCard from "../skeletonLoaders/SkeletonMovieCard";
 import useStore from "../store";
 import SkelitonSinglePage from "../skeletonLoaders/SkelitonSinglePage";
+import parse from 'html-react-parser';
+
 
 function SingleMovie() {
   let {darkMode}=useThemeState()
@@ -168,7 +170,7 @@ function SingleMovie() {
           </div>
           <div className="flex gap-2 mt-5 w-[300px] ">{genre}</div>
           <div className="flex gap-2 mt-5 w-[700px] ">
-            {data?.short?.description}
+            {parse(data?.short?.description)}
           </div>
           <div className="mt-2 flex  w-ful justify-between ">
             <div className="w-[70%]">
