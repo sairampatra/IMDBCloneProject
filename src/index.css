@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.darkCard {
+    background: #161616;
+    color: #fff;
+border: 2px solid rgb(63, 63, 63);
+}
+.lightCard {
+    background: #F3F3F4;
+    color: black;
+    /* border: 2px solid black; */
+}
+.bgDark {
+    background: #161616;
+    
+}
+.bgLight {
+    background: #c6c3bc;
+    color: #000;
+}
+.gray {
+    background: #262525;
+    /* color: #000; */
+}
