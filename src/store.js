@@ -30,7 +30,7 @@ const useStore = create(
           );
 
           if (isAlreadyInWatchlist) {
-            toast("This Movie is already in the watchlist");
+            toast("Amaku side diyo re.....");
             return {};
           } else {
             return {
