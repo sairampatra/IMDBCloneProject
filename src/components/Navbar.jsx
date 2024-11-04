@@ -28,7 +28,6 @@ function Navbar() {
     watchList,
   } = useStore();
   let handleChange = (e) => {
-    // console.log(e.target.value);
     setData(e.target.value);
     setSuggestionsList(e.target.value);
   };
@@ -36,7 +35,6 @@ function Navbar() {
   let debounce = useDebounce(bhalu, 1000);
   let debounce2 = useDebounce(suggestionsQuery, 1000);
 
-  // console.log(suggestionsQuery, "lllllllllllllllllllllllllllll")
   let { isLoading, data, isError, error } = useQuery({
     queryKey: ["searchProduct", debounce, debounce2],
     queryFn: () => fetchSearchData(debounce),

@@ -7,6 +7,7 @@ import MovieCard from "../components/MovieCard";
 import SkeletonMovieCard from "../skeletonLoaders/SkeletonMovieCard";
 import { useThemeState } from "../states/themeState";
 import { MOVIES_LIST } from "../constants/MOVIES_LIST";
+import Kheti from "../components/kheti";
 
 function Search() {
   let {darkMode}=useThemeState()
@@ -18,7 +19,7 @@ function Search() {
     setData(movieWords[pick]);
   }, [setData]);
 
-  let { data, isError, isLoading, error } = useQuery({
+  let { data, isError, isLoading } = useQuery({
     queryKey: ["searchProducts", debounce],
     queryFn: () => fetchSearchData(debounce),
   });
@@ -31,8 +32,10 @@ function Search() {
     
     <div className={`grid w-full  grid-cols-4 gap-3 p-3 relative mt-[64px] ${darkMode? 'bgDark':'bgLight' }`}>
       {isLoading
-        ? Array.from({ length: 8 }).map((item, i) => <SkeletonMovieCard />)
-        : data.map((movie, id) => {
+        ? Array.from({ length: 8 }).map((item, i) => <SkeletonMovieCard key={i}/>)
+        : bhalu === 'sanskruti' || bhalu ==='Sanskruti'  || bhalu ==='Sanskruti sahoo'? <Kheti/> :
+       
+        data.map((movie, id) => {
             return <MovieCard key={id} movie={movie} />;
           })}
     </div>

@@ -2,10 +2,11 @@ import { toast } from "react-toastify";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+
 const useStore = create(
   persist(
     (set) => ({
-      data: "",
+      data: '',
       setData: (newData) => set({ data: newData }),
       suggestionsQuery: "",
       setSuggestionsList: (newData) => set({ suggestionsQuery: newData }),

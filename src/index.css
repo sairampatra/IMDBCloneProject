@@ -24,3 +24,8 @@ border: 2px solid rgb(63, 63, 63);
     background: #262525;
     /* color: #000; */
 }
+.video-custom {
+    height: 470px !important;
+    width: 100% !important;
+  }
+  
