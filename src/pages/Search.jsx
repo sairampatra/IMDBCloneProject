@@ -33,7 +33,7 @@ function Search() {
     <div className={`grid w-full  grid-cols-4 gap-3 p-3 relative mt-[64px] ${darkMode? 'bgDark':'bgLight' }`}>
       {isLoading
         ? Array.from({ length: 8 }).map((item, i) => <SkeletonMovieCard key={i}/>)
-        : bhalu === 'anilkapoor' ? <Kheti/> :
+        : bhalu === 'sanksruti' || bhalu === 'Sanksruti' || bhalu === 'sanksruti sahoo' ||bhalu === 'Sanksruti sahoo' || bhalu === 'Sanksruti Sahoo'? <Kheti/> :
        
         data.map((movie, id) => {
             return <MovieCard key={id} movie={movie} />;
