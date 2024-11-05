@@ -8,7 +8,7 @@ import SkeletonMovieCard from "../skeletonLoaders/SkeletonMovieCard";
 import { useThemeState } from "../states/themeState";
 import { MOVIES_LIST } from "../constants/MOVIES_LIST";
 import Kheti from "../components/kheti";
-
+// just making changes
 function Search() {
   let {darkMode}=useThemeState()
   let movieWords = MOVIES_LIST
