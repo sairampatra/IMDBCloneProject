@@ -156,15 +156,15 @@ function SingleMovie() {
                 </div>
               </div>
             </div>
-          <div className="one mt-2 gap-2 grid w-full grid-cols-[1.2fr,3fr,1fr] h-[24rem] border box-border">
-  <div className="poster h-full border overflow-hidden">
+          <div className="one mt-2 gap-2 grid w-full grid-cols-[1.2fr,3fr,1fr] h-[24rem]  box-border">
+  <div className="poster h-full  overflow-hidden">
     <img
       className="w-full h-full object-cover rounded-xl"
       src={data?.short?.image}
       alt="noimage"
     />
   </div>
-  <div className="trailerVideo w-full h-full overflow-hidden border">
+  <div className="trailerVideo w-full h-full overflow-hidden ">
     <video
       className="w-full h-full object-cover rounded-xl"
       src={videoData}
