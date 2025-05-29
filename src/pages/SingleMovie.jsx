@@ -156,31 +156,32 @@ function SingleMovie() {
                 </div>
               </div>
             </div>
-            <div className="   mt-2  gap-2  grid  w-full grid-cols-[1.2fr,3fr,1fr] h-80   ">
-              <div className="poster  ">
-                <img
-                  className="w-full h-full object-cover rounded-xl"
-                  src={data?.short?.image}
-                  alt="noimage"
-                />
-              </div>
-              <div className="  trailerVideo w-full  h-full ">
-                <video
-                  className="w-full h-full object-cover rounded-xl  "
-                  src={videoData}
-                  width="400"
-                  controls
-                ></video>
-              </div>
-              <div className="   flex flex-col justify-between gap-1 w-full  ">
-                <div className="videos dark:bg-[#d7d3d347]  opacity-2 rounded-xl   h-[50%] w-full justify-center items-center opacity-2 flex ">
-                  {data?.top?.videos?.total} videos
-                </div>
-                <div className="photos dark:bg-[#d7d3d347] opacity-2   rounded-xl h-[50%] w-full justify-center items-center opacity-2 flex">
-                  {data?.top?.images?.total} photos
-                </div>
-              </div>
-            </div>
+          <div className="one mt-2 gap-2 grid w-full grid-cols-[1.2fr,3fr,1fr] h-[24rem] border box-border">
+  <div className="poster h-full border overflow-hidden">
+    <img
+      className="w-full h-full object-cover rounded-xl"
+      src={data?.short?.image}
+      alt="noimage"
+    />
+  </div>
+  <div className="trailerVideo w-full h-full overflow-hidden border">
+    <video
+      className="w-full h-full object-cover rounded-xl"
+      src={videoData}
+      width="400"
+      controls
+    ></video>
+  </div>
+  <div className="flex flex-col justify-between gap-1 w-full h-full">
+    <div className="videos bg-gray-500 rounded-xl h-[50%] w-full flex justify-center items-center">
+      {data?.top?.videos?.total} videos
+    </div>
+    <div className="photos bg-[#d7d3d3] rounded-xl h-[50%] w-full flex justify-center items-center">
+      {data?.top?.images?.total} photos
+    </div>
+  </div>
+</div>
+
             {data.short.description ? (
               <div className="flex gap-2 mt-5 w-[700px] text-sm text-[#FFFFFF]">
                 {parse(data?.short?.description)}
