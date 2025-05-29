@@ -10,7 +10,7 @@ function WatchList() {
   return (
             <div className={`${theme}`}>
 
-    <div className={`grid  w-full  grid-cols-4 gap-3 p-3 relative mt-[64px] bg-[#FCF8F8] dark:bg-[#141414]`}>
+    <div className={`grid px-3 pt-20 grid-cols-2 h-[100vh] w-full  lg:grid-cols-4 gap-3 lg:p-3 relative lg:mt-[64px] bg-[#FCF8F8] dark:bg-[#141414]`}>
       {watchList && watchList.map((movie, id) => {
         return (
           <MovieCard key={id} movie={movie} isRemoveFromWatchlist={true} isAddToWatchList={false}/>

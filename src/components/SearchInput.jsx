@@ -53,7 +53,7 @@ let handleChange = (e) => {
      <div className="bg-[#F1E9EA] dark:bg-[#303030] flex flex-col  p-[7px]  rounded-xl gap-2 items-center relative ">
           <div className="bg-[#F1E9EA] dark:bg-[#303030] flex items-center justify-between">
             <input
-              className={`px-2 text-black placeholder-[#8B5B5D] dark:text-white  w-full h-[25px] bg-transparent  outline-0 ${inputDisplay}`}
+              className={`w-40 px-2 text-black placeholder-[#8B5B5D] dark:text-white  lg:w-full h-[25px] bg-transparent  outline-0 ${inputDisplay}`}
               type="text"
               onChange={handleChange}
               value={suggestionsQuery}

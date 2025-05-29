@@ -20,7 +20,7 @@ function Home() {
   if (isError) return <h1>Error : {error.message}</h1>;
   return (
     <div className={`${theme}`}>
-      <div className={`grid  w-full  grid-cols-4 gap-5 p-3 mt-[64px] bg-[#FCF8F8] dark:bg-[#141414] `}>
+      <div className={`grid px-3 pt-20 w-full grid-cols-2 gap-2 lg:grid-cols-4 lg:gap-5 lg:p-3 lg:mt-[64px] bg-[#FCF8F8] dark:bg-[#141414] `}>
         {!isLoading ? (
           data.description.map((movie) => {
             return <MovieCard key={movie["#IMDB_ID"]} movie={movie} />;

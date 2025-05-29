@@ -39,7 +39,7 @@ useEffect(() => {
         <div className={`${theme}`}>
 
     <div
-      className={`grid w-full  grid-cols-4 gap-3 p-3 relative mt-[64px] bg-[#FCF8F8] dark:bg-[#141414]`}
+      className={`grid px-3 pt-20 w-full  h-full grid-cols-2  lg:grid-cols-4 gap-3 lg:p-3 relative lg:mt-[64px] bg-[#FCF8F8] dark:bg-[#141414]`}
     >
       {isLoading ? (
         Array.from({ length: 8 }).map((item, i) => (

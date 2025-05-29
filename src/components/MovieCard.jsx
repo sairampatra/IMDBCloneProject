@@ -64,7 +64,7 @@ function MovieCard({
               onClick={() => {
                 setTempWatchList(movie);
               }}
-              className=" rounded-md border-2 border-[#F1E9EA] hover:bg-[#F1E9EA]  text-sm px-3 py-[2px] dark:border-[#ABABAB] dark:text-[#ABABAB] dark:border-[1px] dark:py-[4px] dark:hover:bg-[#303030] "
+              className=" px-2 rounded-md border-2 border-[#F1E9EA] hover:bg-[#F1E9EA]  text-sm lg:px-3 py-[2px] dark:border-[#ABABAB] dark:text-[#ABABAB] dark:border-[1px] lg:dark:py-[4px] dark:hover:bg-[#303030] "
             >
               Watch now
             </button>
@@ -73,7 +73,7 @@ function MovieCard({
             {isAddToWatchList && (
               <button
                 onClick={addToWatchList}
-                className="border-2 rounded-lg p-1 hover:bg-gray-300 text-sm px-4 py-[2px] dark:border-[#ABABAB] dark:text-[#ABABAB] dark:py-[4px] dark:border-[1px] dark:hover:bg-[#303030]"
+                className=" px-3 border-2 rounded-lg lg:p-1 hover:bg-gray-300 text-sm lg:px-4 py-[2px] dark:border-[#ABABAB] dark:text-[#ABABAB] lg:dark:py-[4px] dark:border-[1px] dark:hover:bg-[#303030]"
               >
                 Watchlist
               </button>
