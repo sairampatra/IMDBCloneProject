@@ -41,11 +41,11 @@ function SingleMovie() {
   ));
   let directorName = data?.short?.director?.map((director, id, array) =>
     director?.name?.length > 0 ? (
-      <div key={id} className="border-t-[1px] border-gray-500 w-full py-3 dark:text-[#9E9E9E]">
+      <div key={id} className="border-t-[1px] border-gray-400  w-full py-3 dark:text-[#9E9E9E] text-gray-400">
         Director
-        {id < array.length - 1 ?  <span className="  border-r-[1px] px-2 dark:text-[#F1F1F1] ">
+        {id < array.length - 1 ?  <span className=" border-[#171212] border-r-[1px] px-2 dark:text-[#F1F1F1] text-[#171212]">
           {director.name}
-        </span> :  <span className="  px-2 dark:text-[#F1F1F1] ">
+        </span> :  <span className=" border-[#171212] px-2 dark:text-[#F1F1F1] text-[#171212]">
           {director.name}
         </span>}
        
@@ -54,9 +54,9 @@ function SingleMovie() {
   );
   let writersName = data?.short?.creator?.map((creator, id , array) =>
     creator?.name != null ? (
-      id < array.length - 1 ? <span className=" dark:text-[#F1F1F1]  border-r-[1px] px-2" key={id}>
+      id < array.length - 1 ? <span className="text-[#171212] border-[#171212] dark:text-[#F1F1F1]  border-r-[1px] px-2" key={id}>
         {creator?.name}
-      </span> :<span className=" dark:text-[#F1F1F1]   px-2" key={id}>
+      </span> :<span className="text-[#171212] dark:text-[#F1F1F1]  border-[#171212] px-2" key={id}>
         {creator?.name}
       </span>
       
@@ -64,9 +64,9 @@ function SingleMovie() {
   );
   let acrorsName = data?.short?.actor?.map((actor, id , array) =>
     actor?.name != null ? (
-      id < array.length - 1 ? <span className=" dark:text-[#F1F1F1]  border-r-[1px] px-2" key={id}>
+      id < array.length - 1 ? <span className="border-[#171212] dark:text-[#F1F1F1]  border-r-[1px] text-[#171212] px-2" key={id}>
         {actor.name}
-      </span> : <span className="dark:text-[#F1F1F1]   px-2" key={id}>
+      </span> : <span className="border-[#171212] text-[#171212] dark:text-[#F1F1F1]   px-2" key={id}>
         {actor.name}
       </span>
 
@@ -111,20 +111,20 @@ function SingleMovie() {
       {isLoading ? (
         <SkelitonSinglePage />
       ) : (
-        <div className="mt-[64px]  ">
+        <div className="mt-[64px]  bg-[#FBF9F9]">
           <div className={` px-11 dark:bg-[#141414] text-gray-200  pb-8 `}>
             <div className="  flex justify-between  ">
               <div>
-                <h1 className="text-4xl my-3 dark:text-[#FFFFFF]">{data?.short?.name}</h1>
-                <ul className="flex gap-2 text-xs text-[#ABABAB]">
+                <h1 className="text-4xl my-3 dark:text-[#FFFFFF] text-[#171212]">{data?.short?.name}</h1>
+                <ul className="flex gap-2 text-xs text-[#8B5B5D] dark:text-[#ABABAB]">
                   <li>{data?.short?.datePublished?.substring(0, 4)}</li>
-                  <li className="border-l-2 border-r-2 border-gray-500 px-2">
+                  <li className="border-l-2 border-r-2 border-[#8B5B5D] dark:border-gray-500 px-2">
                     {data?.top?.runtime?.displayableProperty.value.plainText}
                   </li>
                   {genre}
                 </ul>
               </div>
-              <div className=" flex gap-5 mt-1 text-xs">
+              <div className=" flex gap-5 mt-1 text-xs dark:text-[#FFFFFF] text-[#171212]">
                 {data?.short?.aggregateRating != null ? (
                   <div className=" rating flex flex-col m-2 items-center ">
                     <h3>IMDb RATING</h3>
@@ -139,7 +139,7 @@ function SingleMovie() {
                             /{data?.short?.aggregateRating?.bestRating}
                           </span>
                         </div>
-                        <div className="text-xs text-[#ABABAB]">
+                        <div className="text-xs dark:text-[#ABABAB] text-[#8B5B5D]">
                           {data?.short?.aggregateRating?.ratingCount}
                         </div>
                       </div>
@@ -173,17 +173,17 @@ function SingleMovie() {
     ></video>
   </div>
   <div className="flex flex-col justify-between gap-1 w-full h-full">
-    <div className="videos bg-gray-500 rounded-xl h-[50%] w-full flex justify-center items-center">
+    <div className="videos bg-[#d9d8d8] text-[#171212] dark:bg-[#f0eaea5f] rounded-xl h-[50%] w-full flex justify-center items-center">
       {data?.top?.videos?.total} videos
     </div>
-    <div className="photos bg-[#d7d3d3] rounded-xl h-[50%] w-full flex justify-center items-center">
+    <div className="photos bg-[#d9d8d8] text-[#171212] dark:bg-[#f0eaea5f] rounded-xl h-[50%] w-full flex justify-center items-center">
       {data?.top?.images?.total} photos
     </div>
   </div>
 </div>
 
             {data.short.description ? (
-              <div className="flex gap-2 mt-5 w-[700px] text-sm text-[#FFFFFF]">
+              <div className="flex gap-2 mt-5 w-[700px] text-sm text-[#171212] dark:text-[#FFFFFF]">
                 {parse(data?.short?.description)}
               </div>
             ) : null}
@@ -192,19 +192,19 @@ function SingleMovie() {
               <div className="w-[65%]">
                 {directorName}
                 {data?.short?.creator?.length > 0 ? (
-                  <div className="border-t-[1px] border-gray-500 w-full py-3 dark:text-[#9E9E9E]">
+                  <div className="border-t-[1px] border-gray-400 w-full py-3 dark:text-[#9E9E9E] text-gray-400">
                     Writers {writersName}
                   </div>
                 ) : null}
                 {data?.short?.actor?.length > 0 ? (
-                  <div className="border-t-[1px] border-gray-500 w-full py-3 dark:text-[#9E9E9E]">
+                  <div className="border-t-[1px] border-gray-400  w-full py-3 dark:text-[#9E9E9E] text-gray-400">
                     Stars {acrorsName}
                   </div>
                 ) : null}
               </div>
               <button
                 onClick={handleTempWatchlist}
-                className="watchlistadd flex  items-center gap-2 px-5 py-1 dark:bg-[#303030] dark:text-[#F1F1F1]   leading-5 rounded-full"
+                className="watchlistadd flex  items-center gap-2 px-5 py-1 dark:bg-[#303030] bg-[#F1E9EA] dark:text-[#F1F1F1]  text-[#8B5B5D] leading-5 rounded-full"
               >
                 <IoMdAdd size={20}  />
                 <div >
@@ -219,7 +219,7 @@ function SingleMovie() {
               </button>
             </div>
           </div>
-          <div className={`flex flex-col w-full   px-11 dark:bg-[#141414] border-t-[1px] dark:border-[#9E9E9E]`}>
+          <div className={`flex flex-col w-full   px-11 dark:bg-[#141414] dark:border-t-[1px] border-t-[2px] border-[#F1E9EA] dark:border-[#9E9E9E]`}>
             <div className="flex  w-full py-6 gap-2 items-center  justify-start">
               <div className="border-l-4 border-[#f1e23d] h-8 rounded-full">
                 {" "}
@@ -230,7 +230,7 @@ function SingleMovie() {
               </p>
               <MdKeyboardArrowRight
                 size={30}
-                color="#FFFFFF"
+                color={theme == 'dark' ? "#FFFFFF" : "#141414" }
                 className="  mt-1"
               />
             </div>

@@ -41,10 +41,10 @@ function MovieCard({
   };
 
   return (
-    <div className={`  flex flex-col items-center rounded-xl   h-[30rem] `}>
+    <div className={`  flex flex-col items-center rounded-xl   h-[36rem] `}>
       <img
         loading="lazy"
-        className="rounded-xl  h-80 w-full object-cover object-top	shadow-[inset_0_0_10px_rgba(0,0,0,0.3)]"
+        className="rounded-xl  h-[26rem] w-full object-cover object-top	shadow-[inset_0_0_10px_rgba(0,0,0,0.3)]"
         src={movie["#IMG_POSTER"] || "aloo"}
         alt=""
       />
