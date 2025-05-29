@@ -102,7 +102,7 @@ function SingleMovie() {
   //   return <div className="text-yellow-100" >Loading...</div>;
   // }
 
-  console.log(tempWatchlist, "amaku side diyo re");
+  // console.log(tempWatchlist, "amaku side diyo re");
 
   return (
         <div className={`${theme}`}>
@@ -165,12 +165,20 @@ function SingleMovie() {
     />
   </div>
   <div className="trailerVideo w-full h-full overflow-hidden ">
-    <video
-      className="w-full h-full object-cover rounded-xl"
-      src={videoData}
-      width="400"
-      controls
-    ></video>
+   {videoLoading ? (
+  <div className="text-[black] dark:text-white w-full h-full flex justify-center items-center border  rounded-xl">
+    <p>Loading trailer...</p>
+  </div>
+) : videoError ? (<div className="w-full h-full flex justify-center items-center border  rounded-xl text-[black] dark:text-white">
+        ⚠️ Trailer not available for this movie. {videoError.message}
+      </div>): (
+  <video
+    className="w-full h-full object-cover rounded-xl"
+    src={videoData}
+    width="400"
+    controls
+  ></video>
+)}
   </div>
   <div className="flex flex-col justify-between gap-1 w-full h-full">
     <div className="videos bg-[#d9d8d8] text-[#171212] dark:bg-[#f0eaea5f] rounded-xl h-[50%] w-full flex justify-center items-center">

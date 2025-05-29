@@ -47,6 +47,10 @@ function MovieCard({
         className="rounded-xl  h-[26rem] w-full object-cover object-top	shadow-[inset_0_0_10px_rgba(0,0,0,0.3)]"
         src={movie["#IMG_POSTER"] || "aloo"}
         alt=""
+        onError={(e) => {
+          e.target.onerror = null; // Prevent infinite loop if fallback also fails
+          e.target.src = "https://www.prokerala.com/movies/assets/img/no-poster-available.webp"; // Local placeholder image
+        }}
       />
 
       <div className="  w-full flex flex-col py-4 gap-1 dark:text-[#FAFAFA] ">
