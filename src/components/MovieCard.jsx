@@ -6,13 +6,16 @@ import { FaPlay } from "react-icons/fa";
 import useStore from "../store";
 import { toast } from "react-toastify";
 // import { THEME } from "../constants/theme";
-import { useThemeState } from "../states/themeState";
-import "../index.css"
+import "../index.css";
 // import Skeleton from "react-loading-skeleton";
 
-function MovieCard({ movie, isRemoveFromWatchlist = false  ,isAddToWatchList=true}) {
-  let { setWatchList, watchList, updateWatchList,setTempWatchList } = useStore();
-  const {darkMode} = useThemeState()
+function MovieCard({
+  movie,
+  isRemoveFromWatchlist = false,
+  isAddToWatchList = true,
+}) {
+  let { setWatchList, watchList, updateWatchList, setTempWatchList } =
+    useStore();
   let addToWatchList = () => {
     let movieExists = false;
     watchList.map((oldMovie, id) => {
@@ -22,13 +25,10 @@ function MovieCard({ movie, isRemoveFromWatchlist = false  ,isAddToWatchList=tru
     });
     if (!movieExists) {
       setWatchList(movie);
-      // setWatchList([...watchList, movie]);
       console.log("Movie added to watchlist");
     } else {
       toast("This Movie is already in the watchlist");
     }
-
-    // console.log(watchList)
   };
 
   const removeFromWatchList = () => {
@@ -37,57 +37,63 @@ function MovieCard({ movie, isRemoveFromWatchlist = false  ,isAddToWatchList=tru
     );
     updateWatchList(updatedWatchList);
     toast("Movie removed from watchlist");
-    console.log("Movie removed from watchlist");
+    // console.log("Movie removed from watchlist");
   };
 
   return (
-    <div className={`  flex flex-col items-center rounded-xl ${darkMode ? "darkCard" : "lightCard"}`}>
-        <img
-          loading="lazy"
-          className="rounded-t-xl  h-[360px] w-full object-cover	"
-          src={movie["#IMG_POSTER"] || "aloo"}
-          alt=""
-          />
+    <div className={`  flex flex-col items-center rounded-xl   h-[30rem] `}>
+      <img
+        loading="lazy"
+        className="rounded-xl  h-80 w-full object-cover object-top	shadow-[inset_0_0_10px_rgba(0,0,0,0.3)]"
+        src={movie["#IMG_POSTER"] || "aloo"}
+        alt=""
+      />
 
-        <div className="  w-full flex flex-col p-4 gap-[7px]">
-          <div className=" w-full flex items-center gap-2 text-[20px]">
-            <PiRankingBold />
-            <p>Rank: {movie["#RANK"]}</p>
-          </div>
-          <Link>
-            {" "}
-            <h1 className="text-[25px] truncate ">{movie["#AKA"]}</h1>
-          </Link>
-           <Link to={`/singleMovie/${movie["#IMDB_ID"]}`}>
-          <button 
-          onClick={()=>{setTempWatchList(movie)}}
-          className=" text-[20px] rounded-md border-2 border-darkgray-500 hover:bg-gray-300 w-[170px] ">
-            Watch now
-          </button> </Link>
-          <div className="flex gap-2">
-            {isAddToWatchList && ( <button
-              onClick={addToWatchList}
-              className="border-2 rounded-lg p-1 hover:bg-gray-300 w-[170px]"
+      <div className="  w-full flex flex-col py-4 gap-1 dark:text-[#FAFAFA] ">
+        <div className=" w-full flex items-center gap-2 text-[20px] text-sm">
+          <PiRankingBold />
+          <p>Rank: {movie["#RANK"]}</p>
+        </div>
+        <Link>
+          <h1 className="text-[25px] truncate text-xl">{movie["#AKA"]}</h1>
+        </Link>
+
+        <div className="flex gap-1">
+          <Link to={`/singleMovie/${movie["#IMDB_ID"]}`}>
+            <button
+              onClick={() => {
+                setTempWatchList(movie);
+              }}
+              className=" rounded-md border-2 border-[#F1E9EA] hover:bg-[#F1E9EA]  text-sm px-3 py-[2px] dark:border-[#ABABAB] dark:text-[#ABABAB] dark:border-[1px] dark:py-[4px] dark:hover:bg-[#303030] "
             >
-              AddToWatchlist
-            </button>) }
-           
-            {isRemoveFromWatchlist && (
+              Watch now
+            </button>
+          </Link>
+          <div className="flex gap-2">
+            {isAddToWatchList && (
               <button
-                className="border-2 rounded-lg p-1 hover:bg-gray-300 w-[170px]"
-                onClick={removeFromWatchList}
+                onClick={addToWatchList}
+                className="border-2 rounded-lg p-1 hover:bg-gray-300 text-sm px-4 py-[2px] dark:border-[#ABABAB] dark:text-[#ABABAB] dark:py-[4px] dark:border-[1px] dark:hover:bg-[#303030]"
               >
-                RemoveFromWatchlist
+                Watchlist
               </button>
             )}
           </div>
-          <button className=" flex items-center gap-2">
-            <FaPlay />
-            Trailer
-          </button>
+          {isRemoveFromWatchlist && (
+            <button
+              className="border-2 rounded-lg p-1 hover:bg-gray-300 text-sm px-4 py-[2px] dark:border-[#ABABAB] dark:text-[#ABABAB] dark:py-[4px] dark:border-[1px] dark:hover:bg-[#303030]"
+              onClick={removeFromWatchList}
+            >
+              Remove
+            </button>
+          )}
         </div>
+        <button className=" flex items-center gap-2 text-sm dark:text-[#9E9E9E]">
+          <FaPlay />
+          Trailer
+        </button>
       </div>
-   
+    </div>
   );
 }
 

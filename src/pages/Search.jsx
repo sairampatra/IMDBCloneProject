@@ -5,39 +5,57 @@ import { fetchSearchData } from "../hooks/fetchSearchData";
 import { useQuery } from "@tanstack/react-query";
 import MovieCard from "../components/MovieCard";
 import SkeletonMovieCard from "../skeletonLoaders/SkeletonMovieCard";
-import { useThemeState } from "../states/themeState";
 import { MOVIES_LIST } from "../constants/MOVIES_LIST";
 import Kheti from "../components/Kheti";
 // just making changes
 function Search() {
-  let {darkMode}=useThemeState()
-  let movieWords = MOVIES_LIST
-  let { data: bhalu, setData } = useStore();
+  let movieWords = MOVIES_LIST;
+  let { data: bhalu, setData,theme } = useStore();
   let debounce = useDebounce(bhalu, 1000);
-  useEffect(() => {
-    let pick = Math.floor(Math.random() * movieWords.length);
+  
+function setRandomMovie() {
+   let pick = Math.floor(Math.random() * movieWords.length);
     setData(movieWords[pick]);
-  }, [setData]);
-
+}
+useEffect(() => {
+  if (debounce === '') {
+    setRandomMovie();
+  }
+}, [debounce]);
   let { data, isError, isLoading } = useQuery({
     queryKey: ["searchProducts", debounce],
     queryFn: () => fetchSearchData(debounce),
   });
+  useEffect(() => {
+   setRandomMovie()
+  }, [setData]);
+
+  
   if (isError) {
     // console.log(error)
     return <div>error he mc</div>;
   }
-  // console.log(data)
   return (
-    
-    <div className={`grid w-full  grid-cols-4 gap-3 p-3 relative mt-[64px] ${darkMode? 'bgDark':'bgLight' }`}>
-      {isLoading
-        ? Array.from({ length: 8 }).map((item, i) => <SkeletonMovieCard key={i}/>)
-        : bhalu === 'sanskruti' || bhalu === 'Sanskruti'|| bhalu === 'sanskruti sahoo' || bhalu === 'Sanskruti Sahoo'? <Kheti/> :
-       
+        <div className={`${theme}`}>
+
+    <div
+      className={`grid w-full  grid-cols-4 gap-3 p-3 relative mt-[64px] bg-[#FCF8F8] dark:bg-[#141414]`}
+    >
+      {isLoading ? (
+        Array.from({ length: 8 }).map((item, i) => (
+          <SkeletonMovieCard key={i} />
+        ))
+      ) : bhalu === "sanskruti" ||
+        bhalu === "Sanskruti" ||
+        bhalu === "sanskruti sahoo" ||
+        bhalu === "Sanskruti Sahoo" ? (
+        <Kheti />
+      ) : (
         data.map((movie, id) => {
-            return <MovieCard key={id} movie={movie} />;
-          })}
+          return <MovieCard key={id} movie={movie} />;
+        })
+      )}
+    </div>
     </div>
   );
 }

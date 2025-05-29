@@ -72,7 +72,7 @@ function SkelitonSinglePage() {
 
           <div className=" grid grid-cols-3 gap-4">
 
-          <div class="w-[300px] h-[120px] flex justify-start items-center gap-3">
+          <div className="w-[300px] h-[120px] flex justify-start items-center gap-3">
           <Skeleton className=" rounded-full h-[110px] w-[110px] flex items-center justify-center object-cover"/>
             
             
@@ -80,7 +80,7 @@ function SkelitonSinglePage() {
             <Skeleton className="font-semibold w-28 h-6"/>
             <Skeleton className="font-semibold w-28 h-6"/>
           </div>
-          </div><div class="w-[300px] h-[120px] flex justify-start items-center gap-3">
+          </div><div className="w-[300px] h-[120px] flex justify-start items-center gap-3">
           <Skeleton className=" rounded-full h-[110px] w-[110px] flex items-center justify-center object-cover"/>
             
             
@@ -88,7 +88,7 @@ function SkelitonSinglePage() {
             <Skeleton className="font-semibold w-28 h-6"/>
             <Skeleton className="font-semibold w-28 h-6"/>
           </div>
-          </div><div class="w-[300px] h-[120px] flex justify-start items-center gap-3">
+          </div><div className="w-[300px] h-[120px] flex justify-start items-center gap-3">
           <Skeleton className=" rounded-full h-[110px] w-[110px] flex items-center justify-center object-cover"/>
             
             
@@ -96,7 +96,7 @@ function SkelitonSinglePage() {
             <Skeleton className="font-semibold w-28 h-6"/>
             <Skeleton className="font-semibold w-28 h-6"/>
           </div>
-          </div><div class="w-[300px] h-[120px] flex justify-start items-center gap-3">
+          </div><div className="w-[300px] h-[120px] flex justify-start items-center gap-3">
           <Skeleton className=" rounded-full h-[110px] w-[110px] flex items-center justify-center object-cover"/>
             
             
@@ -104,7 +104,7 @@ function SkelitonSinglePage() {
             <Skeleton className="font-semibold w-28 h-6"/>
             <Skeleton className="font-semibold w-28 h-6"/>
           </div>
-          </div><div class="w-[300px] h-[120px] flex justify-start items-center gap-3">
+          </div><div className="w-[300px] h-[120px] flex justify-start items-center gap-3">
           <Skeleton className=" rounded-full h-[110px] w-[110px] flex items-center justify-center object-cover"/>
             
             
@@ -112,7 +112,7 @@ function SkelitonSinglePage() {
             <Skeleton className="font-semibold w-28 h-6"/>
             <Skeleton className="font-semibold w-28 h-6"/>
           </div>
-          </div><div class="w-[300px] h-[120px] flex justify-start items-center gap-3">
+          </div><div className="w-[300px] h-[120px] flex justify-start items-center gap-3">
           <Skeleton className=" rounded-full h-[110px] w-[110px] flex items-center justify-center object-cover"/>
             
             
@@ -120,7 +120,7 @@ function SkelitonSinglePage() {
             <Skeleton className="font-semibold w-28 h-6"/>
             <Skeleton className="font-semibold w-28 h-6"/>
           </div>
-          </div><div class="w-[300px] h-[120px] flex justify-start items-center gap-3">
+          </div><div className="w-[300px] h-[120px] flex justify-start items-center gap-3">
           <Skeleton className=" rounded-full h-[110px] w-[110px] flex items-center justify-center object-cover"/>
             
             
@@ -128,7 +128,7 @@ function SkelitonSinglePage() {
             <Skeleton className="font-semibold w-28 h-6"/>
             <Skeleton className="font-semibold w-28 h-6"/>
           </div>
-          </div><div class="w-[300px] h-[120px] flex justify-start items-center gap-3">
+          </div><div className="w-[300px] h-[120px] flex justify-start items-center gap-3">
           <Skeleton className=" rounded-full h-[110px] w-[110px] flex items-center justify-center object-cover"/>
             
             
@@ -136,7 +136,7 @@ function SkelitonSinglePage() {
             <Skeleton className="font-semibold w-28 h-6"/>
             <Skeleton className="font-semibold w-28 h-6"/>
           </div>
-          </div><div class="w-[300px] h-[120px] flex justify-start items-center gap-3">
+          </div><div className="w-[300px] h-[120px] flex justify-start items-center gap-3">
           <Skeleton className=" rounded-full h-[110px] w-[110px] flex items-center justify-center object-cover"/>
             
             

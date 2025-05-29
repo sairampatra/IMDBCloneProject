@@ -7,3 +7,4 @@ export function ErrorBoundryJagan({ error, resetErrorBoundary }) {
       </div>
     );
   }
+

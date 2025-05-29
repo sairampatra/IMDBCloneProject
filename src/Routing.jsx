@@ -13,10 +13,15 @@ const Home = lazy(() => import("./pages/Home")); // Yeh syntex ek component ko l
 function Routing() {
   return (
     <BrowserRouter>
-      <Navbar />
       <ErrorBoundary FallbackComponent={ErrorBoundryJagan} onReset={() => {}}>
+      <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={
+             <Suspense fallback={<h1>Loading...</h1>}>
+            <Home />
+              </Suspense>
+            
+            } />
           <Route
             path="/search"
             element={
