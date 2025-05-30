@@ -14,7 +14,7 @@ import SkelitonSinglePage from "../skeletonLoaders/SkelitonSinglePage";
 import parse from "html-react-parser";
 
 function SingleMovie() {
-  const { tempWatchlist, handleTempWatchlist,theme } = useStore();
+  const { tempWatchlist, handleTempWatchlist, theme } = useStore();
 
   const { movieId } = useParams();
   useEffect(() => {
@@ -39,38 +39,108 @@ function SingleMovie() {
       {index < array.length - 1 ? "," : ""}
     </li>
   ));
+  let ratingsInfo = function ({ data }) {
+    return (
+      <div className="ratings_area flex gap-5 mt-1 text-xs dark:text-[#FFFFFF] text-[#171212] ">
+        {data?.short?.aggregateRating != null ? (
+          <div className=" rating flex flex-col m-2 items-center ">
+            <h3>IMDb RATING</h3>
+            <div className="flex items-start gap-2 mt-1">
+              <FaStar color="yellow" size={23} />
+              <div className="flex flex-col leading-5">
+                <div className="flex items-center">
+                  <span className="text-lg font-medium">
+                    {data?.short?.aggregateRating?.ratingValue}
+                  </span>
+                  <span>/{data?.short?.aggregateRating?.bestRating}</span>
+                </div>
+                <div className="text-xs dark:text-[#ABABAB] text-[#8B5B5D]">
+                  {data?.short?.aggregateRating?.ratingCount}
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : null}
+
+        <div className="rateit flex flex-col m-2 items-center">
+          <h3>YOUR RATING</h3>
+          <div className="flex items-center gap-1 mt-1">
+            <CiStar color="#ABABAB" size={23} />
+            <h1 className=" text-sm font-medium">Rate</h1>
+          </div>
+        </div>
+      </div>
+    );
+  };
+  
+  let posterImage = function ({ data }) {
+    return (
+       <div className="poster h-full  overflow-hidden">
+                  <img
+                    className="w-full h-full object-cover lg:rounded-xl"
+                    src={data?.short?.image}
+                    alt="noimage"
+                  />
+                </div>
+    );
+  };
+
+
   let directorName = data?.short?.director?.map((director, id, array) =>
     director?.name?.length > 0 ? (
-      <div key={id} className="border-t-[1px] border-gray-400  w-full py-3 dark:text-[#9E9E9E] text-gray-400">
+      <div
+        key={id}
+        className="border-t-[1px] border-gray-400  w-full py-3 dark:text-[#9E9E9E] text-gray-400"
+      >
         Director
-        {id < array.length - 1 ?  <span className=" border-[#171212] border-r-[1px] px-2 dark:text-[#F1F1F1] text-[#171212]">
-          {director.name}
-        </span> :  <span className=" border-[#171212] px-2 dark:text-[#F1F1F1] text-[#171212]">
-          {director.name}
-        </span>}
-       
+        {id < array.length - 1 ? (
+          <span className=" border-[#171212] border-r-[1px] px-2 dark:text-[#F1F1F1] text-[#171212]">
+            {director.name}
+          </span>
+        ) : (
+          <span className=" border-[#171212] px-2 dark:text-[#F1F1F1] text-[#171212]">
+            {director.name}
+          </span>
+        )}
       </div>
     ) : null
   );
-  let writersName = data?.short?.creator?.map((creator, id , array) =>
+  let writersName = data?.short?.creator?.map((creator, id, array) =>
     creator?.name != null ? (
-      id < array.length - 1 ? <span className="text-[#171212] border-[#171212] dark:text-[#F1F1F1]  border-r-[1px] px-2" key={id}>
-        {creator?.name}
-      </span> :<span className="text-[#171212] dark:text-[#F1F1F1]  border-[#171212] px-2" key={id}>
-        {creator?.name}
-      </span>
-      
+      id < array.length - 1 ? (
+        <span
+          className="text-[#171212] border-[#171212] dark:text-[#F1F1F1]  border-r-[1px] px-2"
+          key={id}
+        >
+          {creator?.name}
+        </span>
+      ) : (
+        <span
+          className="text-[#171212] dark:text-[#F1F1F1]  border-[#171212] px-2"
+          key={id}
+        >
+          {creator?.name}
+        </span>
+      )
     ) : null
   );
-  let acrorsName = data?.short?.actor?.map((actor, id , array) =>
+  let acrorsName = data?.short?.actor?.map((actor, id, array) =>
     actor?.name != null ? (
-      id < array.length - 1 ? <span className="border-[#171212] dark:text-[#F1F1F1]  border-r-[1px] text-[#171212] px-2" key={id}>
-        {actor.name}
-      </span> : <span className="border-[#171212] text-[#171212] dark:text-[#F1F1F1]   px-2" key={id}>
-        {actor.name}
-      </span>
-
-      
+      id < array.length - 1 ? (
+        <span
+          className="border-[#171212] dark:text-[#F1F1F1]  border-r-[1px] text-[#171212] px-2"
+          key={id}
+        >
+          {actor.name}
+        </span>
+      ) : (
+        <span
+          className="border-[#171212] text-[#171212] dark:text-[#F1F1F1]   px-2"
+          key={id}
+        >
+          {actor.name}
+        </span>
+      )
     ) : null
   );
   let castInfo = data?.main?.cast?.edges?.map((cast, id) => {
@@ -88,7 +158,9 @@ function SingleMovie() {
           className="  rounded-full h-[110px] w-[110px] flex items-center justify-center object-cover object-top"
         />
         <div>
-          <h2 className="font-semibold dark:text-[#FFFFFF]">{cast?.node?.name?.nameText?.text}</h2>
+          <h2 className="font-semibold dark:text-[#FFFFFF]">
+            {cast?.node?.name?.nameText?.text}
+          </h2>
           <p className="text-gray-500 dark:text-[#9E9E9E]">
             {cast?.node?.characters?.map((charname, id) => {
               return <span key={id}>{charname.name}</span>;
@@ -105,129 +177,109 @@ function SingleMovie() {
   // console.log(tempWatchlist, "amaku side diyo re");
 
   return (
-        <div className={`${theme}`}>
-
-    <div>
-      {isLoading ? (
-        <SkelitonSinglePage />
-      ) : (
-        <div className="mt-[64px]  bg-[#FBF9F9]">
-          <div className={` px-11 dark:bg-[#141414] text-gray-200  pb-8 `}>
-            <div className="  flex justify-between  ">
-              <div>
-                <h1 className="text-4xl my-3 dark:text-[#FFFFFF] text-[#171212]">{data?.short?.name}</h1>
-                <ul className="flex gap-2 text-xs text-[#8B5B5D] dark:text-[#ABABAB]">
-                  <li>{data?.short?.datePublished?.substring(0, 4)}</li>
-                  <li className="border-l-2 border-r-2 border-[#8B5B5D] dark:border-gray-500 px-2">
-                    {data?.top?.runtime?.displayableProperty.value.plainText}
-                  </li>
-                  {genre}
-                </ul>
+    <div className={`${theme}`}>
+      <div>
+        {isLoading ? (
+          <SkelitonSinglePage />
+        ) : (
+          <div className="mt-[64px]  bg-[#FBF9F9]">
+            <div
+              className={`px-4 lg:px-11 dark:bg-[#141414] text-gray-200  pb-8 `}
+            >
+              <div className="top_most  flex justify-between  ">
+                <div>
+                  <h1 className="text-4xl my-3 dark:text-[#FFFFFF] text-[#171212]">
+                    {data?.short?.name}
+                  </h1>
+                  <ul className="flex gap-2 text-xs text-[#8B5B5D] dark:text-[#ABABAB]">
+                    <li>{data?.short?.datePublished?.substring(0, 4)}</li>
+                    <li className="border-l-2 border-r-2 border-[#8B5B5D] dark:border-gray-500 px-2">
+                      {data?.top?.runtime?.displayableProperty.value.plainText}
+                    </li>
+                    {genre}
+                  </ul>
+                </div>
+                <div className="hidden  lg:block">{ratingsInfo({ data })}</div>
               </div>
-              <div className=" flex gap-5 mt-1 text-xs dark:text-[#FFFFFF] text-[#171212]">
-                {data?.short?.aggregateRating != null ? (
-                  <div className=" rating flex flex-col m-2 items-center ">
-                    <h3>IMDb RATING</h3>
-                    <div className="flex items-start gap-2 mt-1">
-                      <FaStar color="yellow" size={23} />
-                      <div className="flex flex-col leading-5">
-                        <div className="flex items-center">
-                          <span className="text-lg font-medium">
-                            {data?.short?.aggregateRating?.ratingValue}
-                          </span>
-                          <span>
-                            /{data?.short?.aggregateRating?.bestRating}
-                          </span>
-                        </div>
-                        <div className="text-xs dark:text-[#ABABAB] text-[#8B5B5D]">
-                          {data?.short?.aggregateRating?.ratingCount}
-                        </div>
-                      </div>
+              <div className=" h-[12rem] xl:h-[30rem]  lg:grid w-full lg:grid-cols-[1.2fr,3fr,1fr] lg:h-[24rem] mt-2 gap-2    box-border">
+               <div className="hidden lg:block">
+
+                {posterImage({data})}
+               </div>
+                <div className=" trailerVideo w-full h-full overflow-hidden ">
+                  {videoLoading ? (
+                    <div className="text-[black] dark:text-white w-full h-full flex justify-center items-center border rounded-none  lg:rounded-xl">
+                      <p>Loading trailer...</p>
+                    </div>
+                  ) : videoError ? (
+                    <div className="w-full h-full flex justify-center items-center border   text-[black] dark:text-white  lg:rounded-xl">
+                      ⚠️ Trailer not available for this movie.{" "}
+                      {videoError.message}
+                    </div>
+                  ) : (
+                    <video
+                      className="w-full h-full object-cover   lg:rounded-xl"
+                      src={videoData}
+                      width="400"
+                      controls
+                    ></video>
+                  )}
+                </div>
+                <div className="hidden lg:block">
+                  <div className="   flex flex-col justify-between gap-1 w-full h-full">
+                    <div className="videos bg-[#d9d8d8] text-[#171212] dark:bg-[#f0eaea5f] rounded-xl h-[50%] w-full flex justify-center items-center">
+                      {data?.top?.videos?.total} videos
+                    </div>
+                    <div className="photos bg-[#d9d8d8] text-[#171212] dark:bg-[#f0eaea5f] rounded-xl h-[50%] w-full flex justify-center items-center">
+                      {data?.top?.images?.total} photos
                     </div>
                   </div>
-                ) : null}
-
-                <div className="rateit flex flex-col m-2 items-center">
-                  <h3>YOUR RATING</h3>
-                  <div className="flex items-center gap-1 mt-1">
-                    <CiStar color="#ABABAB" size={23} />
-                    <h1 className=" text-sm font-medium">Rate</h1>
-                  </div>
                 </div>
               </div>
-            </div>
-          <div className="one mt-2 gap-2 grid w-full grid-cols-[1.2fr,3fr,1fr] h-[24rem]  box-border">
-  <div className="poster h-full  overflow-hidden">
-    <img
-      className="w-full h-full object-cover rounded-xl"
-      src={data?.short?.image}
-      alt="noimage"
-    />
-  </div>
-  <div className="trailerVideo w-full h-full overflow-hidden ">
-   {videoLoading ? (
-  <div className="text-[black] dark:text-white w-full h-full flex justify-center items-center border  rounded-xl">
-    <p>Loading trailer...</p>
-  </div>
-) : videoError ? (<div className="w-full h-full flex justify-center items-center border  rounded-xl text-[black] dark:text-white">
-        ⚠️ Trailer not available for this movie. {videoError.message}
-      </div>): (
-  <video
-    className="w-full h-full object-cover rounded-xl"
-    src={videoData}
-    width="400"
-    controls
-  ></video>
-)}
-  </div>
-  <div className="flex flex-col justify-between gap-1 w-full h-full">
-    <div className="videos bg-[#d9d8d8] text-[#171212] dark:bg-[#f0eaea5f] rounded-xl h-[50%] w-full flex justify-center items-center">
-      {data?.top?.videos?.total} videos
-    </div>
-    <div className="photos bg-[#d9d8d8] text-[#171212] dark:bg-[#f0eaea5f] rounded-xl h-[50%] w-full flex justify-center items-center">
-      {data?.top?.images?.total} photos
-    </div>
-  </div>
-</div>
+                  <div className="description flex items-start justify-center mt-2 gap-2"> 
+                    <div className="lg:hidden  w-60">
 
-            {data.short.description ? (
-              <div className="flex gap-2 mt-5 w-[700px] text-sm text-[#171212] dark:text-[#FFFFFF]">
-                {parse(data?.short?.description)}
-              </div>
-            ) : null}
-
-            <div className="mt-2 flex  w-full justify-between items-center  text-xs">
-              <div className="w-[65%]">
-                {directorName}
-                {data?.short?.creator?.length > 0 ? (
-                  <div className="border-t-[1px] border-gray-400 w-full py-3 dark:text-[#9E9E9E] text-gray-400">
-                    Writers {writersName}
-                  </div>
-                ) : null}
-                {data?.short?.actor?.length > 0 ? (
-                  <div className="border-t-[1px] border-gray-400  w-full py-3 dark:text-[#9E9E9E] text-gray-400">
-                    Stars {acrorsName}
-                  </div>
-                ) : null}
-              </div>
-              <button
-                onClick={handleTempWatchlist}
-                className="watchlistadd flex  items-center gap-2 px-5 py-1 dark:bg-[#303030] bg-[#F1E9EA] dark:text-[#F1F1F1]  text-[#8B5B5D] leading-5 rounded-full"
-              >
-                <IoMdAdd size={20}  />
-                <div >
-                  <h2 className=" text-base ">Add to Watchlist</h2>
-                  <p className="text-xs dark:text-[#9E9E9E] ">
-                    {
-                      data?.top?.engagementStatistics?.watchlistStatistics
-                        ?.displayableCount?.text
-                    }
-                  </p>
+                  {posterImage({data})}
+                    </div>
+              {data?.short?.description ? (
+                <div className="flex gap-2 mt-5 w-full text-sm text-[#171212] dark:text-[#FFFFFF]">
+                  {parse(data?.short?.description)}
                 </div>
-              </button>
+              ) : null}
+                  </div>
+
+              <div className="mt-2 flex  w-full justify-between items-center  text-xs">
+                <div className="w-[65%]">
+                  {directorName}
+                  {data?.short?.creator?.length > 0 ? (
+                    <div className="border-t-[1px] border-gray-400 w-full py-3 dark:text-[#9E9E9E] text-gray-400">
+                      Writers {writersName}
+                    </div>
+                  ) : null}
+                  {data?.short?.actor?.length > 0 ? (
+                    <div className="border-t-[1px] border-gray-400  w-full py-3 dark:text-[#9E9E9E] text-gray-400">
+                      Stars {acrorsName}
+                    </div>
+                  ) : null}
+                </div>
+                <button
+                  onClick={handleTempWatchlist}
+                  className="watchlistadd flex  items-center gap-2 px-5 py-1 dark:bg-[#303030] bg-[#F1E9EA] dark:text-[#F1F1F1]  text-[#8B5B5D] leading-5 rounded-full"
+                >
+                  <IoMdAdd size={20} />
+                  <div>
+                    <h2 className=" text-base ">Add to Watchlist</h2>
+                    <p className="text-xs dark:text-[#9E9E9E] ">
+                      {
+                        data?.top?.engagementStatistics?.watchlistStatistics
+                          ?.displayableCount?.text
+                      }
+                    </p>
+                  </div>
+                </button>
+              </div>
             </div>
-          </div>
-          <div className={`flex flex-col w-full   px-11 dark:bg-[#141414] dark:border-t-[1px] border-t-[2px] border-[#F1E9EA] dark:border-[#9E9E9E]`}>
+            {/* <div className={` flex flex-col w-full   px-11 dark:bg-[#141414] dark:border-t-[1px] border-t-[2px] border-[#F1E9EA] dark:border-[#9E9E9E]`}>
             <div className="flex  w-full py-6 gap-2 items-center  justify-start">
               <div className="border-l-4 border-[#f1e23d] h-8 rounded-full">
                 {" "}
@@ -243,10 +295,10 @@ function SingleMovie() {
               />
             </div>
             <div className=" grid grid-cols-3 gap-4 ">{castInfo}</div>
+          </div> */}
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
     </div>
   );
 }

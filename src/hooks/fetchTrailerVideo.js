@@ -7,10 +7,8 @@ export async function fetchTrailerVideo(imdbId) {
       responseType: 'blob',
     });
 
-    // Create a URL for the video blob
     const videoUrl = URL.createObjectURL(response.data);
 console.log(videoUrl)
-    // Return the video URL so that it can be used in the UI
     return videoUrl;
   } catch (error) {
     console.error('Error fetching the trailer video:', error);

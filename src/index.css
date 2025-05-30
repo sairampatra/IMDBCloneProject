@@ -36,3 +36,20 @@ border: 2px solid rgb(63, 63, 63);
 } */
  
 
+@media (max-width: 768px) {
+  .custom-toast  {
+    width: 75vw !important;
+    min-height: 40px !important;
+        margin-top: 15vw;
+
+  }
+}
+
+@media (min-width: 769px) {
+  .custom-toast {
+    width: 400px !important;
+    min-height: 40px !important;
+    margin-top: 40px;
+  }
+}
+

@@ -3,11 +3,11 @@ import React from 'react'
 function Spinner() {
     return (
       
-       <div className='w-full absolute top-0 left-0 h-[420px]'>  
+       <div className='w-full absolute top-0 left-0 h-full'>  
             
-       <img  className='w-full  h-[93vh]'src="https://media.tenor.com/SR5EYRIl3qwAAAAM/turtle-spinning.gif" alt=""/>
+       <img  className='w-full  h-[93%]'src="https://media.tenor.com/SR5EYRIl3qwAAAAM/turtle-spinning.gif" alt=""/>
        <h1  className='flex justify-center text-4xl '>
-       <b>LOADING.....</b>
+       <b>LOADING....</b>
        </h1>
        </div>
     )
