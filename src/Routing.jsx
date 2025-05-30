@@ -33,7 +33,7 @@ function Routing() {
           <Route
             path="/watchList"
             element={
-              <Suspense fallback={<h1>side diyo</h1>}>
+              <Suspense fallback={<h1>Loading...</h1>}>
                 <WatchList />
               </Suspense>
             }

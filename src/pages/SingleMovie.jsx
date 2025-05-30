@@ -46,7 +46,7 @@ function SingleMovie() {
           <div className=" rating flex flex-col m-2 items-center ">
             <h3>IMDb RATING</h3>
             <div className="flex items-start gap-2 mt-1">
-              <FaStar color="yellow" size={23} />
+              <FaStar color="#f1e23d" size={23}  />
               <div className="flex items-center md:flex-col lg:flex-col leading-5 md:gap-0 lg:gap-0 gap-3">
                 <div className="flex items-center">
                   <span className="text-lg font-medium">
