@@ -53,3 +53,11 @@ border: 2px solid rgb(63, 63, 63);
   }
 }
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* Hide scrollbar for IE, Edge */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}

@@ -41,13 +41,13 @@ function SingleMovie() {
   ));
   let ratingsInfo = function ({ data }) {
     return (
-      <div className="ratings_area flex gap-5 mt-1 text-xs dark:text-[#FFFFFF] text-[#171212] ">
+      <div className=" ratings_area lg:items-start items-center justify-center flex gap-5 mt-1 text-xs dark:text-[#FFFFFF] text-[#171212] ">
         {data?.short?.aggregateRating != null ? (
           <div className=" rating flex flex-col m-2 items-center ">
             <h3>IMDb RATING</h3>
             <div className="flex items-start gap-2 mt-1">
               <FaStar color="yellow" size={23} />
-              <div className="flex flex-col leading-5">
+              <div className="flex items-center lg:flex-col leading-5 lg:gap-0 gap-3">
                 <div className="flex items-center">
                   <span className="text-lg font-medium">
                     {data?.short?.aggregateRating?.ratingValue}
@@ -72,19 +72,18 @@ function SingleMovie() {
       </div>
     );
   };
-  
+
   let posterImage = function ({ data }) {
     return (
-       <div className="poster h-full  overflow-hidden">
-                  <img
-                    className="w-full h-full object-cover lg:rounded-xl"
-                    src={data?.short?.image}
-                    alt="noimage"
-                  />
-                </div>
+      <div className="poster h-full  overflow-hidden">
+        <img
+          className="w-full h-full object-cover lg:rounded-xl"
+          src={data?.short?.image}
+          alt="noimage"
+        />
+      </div>
     );
   };
-
 
   let directorName = data?.short?.director?.map((director, id, array) =>
     director?.name?.length > 0 ? (
@@ -147,7 +146,7 @@ function SingleMovie() {
     return (
       <div
         key={id}
-        className="w-[300px] h-[120px] flex justify-start items-center gap-3"
+        className="min-w-[300px] lg:w-[300px] h-[120px] flex justify-start items-center gap-3"
       >
         <img
           src={
@@ -202,10 +201,7 @@ function SingleMovie() {
                 <div className="hidden  lg:block">{ratingsInfo({ data })}</div>
               </div>
               <div className=" h-[12rem] xl:h-[30rem]  lg:grid w-full lg:grid-cols-[1.2fr,3fr,1fr] lg:h-[24rem] mt-2 gap-2    box-border">
-               <div className="hidden lg:block">
-
-                {posterImage({data})}
-               </div>
+                <div className="hidden lg:block">{posterImage({ data })}</div>
                 <div className=" trailerVideo w-full h-full overflow-hidden ">
                   {videoLoading ? (
                     <div className="text-[black] dark:text-white w-full h-full flex justify-center items-center border rounded-none  lg:rounded-xl">
@@ -236,20 +232,20 @@ function SingleMovie() {
                   </div>
                 </div>
               </div>
-                  <div className="description flex items-start justify-center mt-2 gap-2"> 
-                    <div className="lg:hidden  w-60">
-
-                  {posterImage({data})}
-                    </div>
-              {data?.short?.description ? (
-                <div className="flex gap-2 mt-5 w-full text-sm text-[#171212] dark:text-[#FFFFFF]">
-                  {parse(data?.short?.description)}
-                </div>
-              ) : null}
+              <div className="description flex items-start justify-center mt-2 gap-2">
+                <div className="lg:hidden  w-60">{posterImage({ data })}</div>
+                {data?.short?.description ? (
+                  <div className="flex gap-2 mt-5 w-full text-sm text-[#171212] dark:text-[#FFFFFF]">
+                    {parse(data?.short?.description)}
                   </div>
+                ) : null}
+              </div>
+              <div className="lg:hidden">
 
-              <div className="mt-2 flex  w-full justify-between items-center  text-xs">
-                <div className="w-[65%]">
+              {ratingsInfo({ data })}
+              </div>
+              <div className=" mt-2 flex flex-col lg:flex-row w-full justify-between items-center  text-xs">
+                <div className="w-full lg:w-[65%]">
                   {directorName}
                   {data?.short?.creator?.length > 0 ? (
                     <div className="border-t-[1px] border-gray-400 w-full py-3 dark:text-[#9E9E9E] text-gray-400">
@@ -264,7 +260,7 @@ function SingleMovie() {
                 </div>
                 <button
                   onClick={handleTempWatchlist}
-                  className="watchlistadd flex  items-center gap-2 px-5 py-1 dark:bg-[#303030] bg-[#F1E9EA] dark:text-[#F1F1F1]  text-[#8B5B5D] leading-5 rounded-full"
+                  className=" mt-4 watchlistadd flex  items-center gap-2 px-5 py-1 dark:bg-[#303030] bg-[#F1E9EA] dark:text-[#F1F1F1]  text-[#8B5B5D] leading-5 rounded-full"
                 >
                   <IoMdAdd size={20} />
                   <div>
@@ -279,12 +275,12 @@ function SingleMovie() {
                 </button>
               </div>
             </div>
-            {/* <div className={` flex flex-col w-full   px-11 dark:bg-[#141414] dark:border-t-[1px] border-t-[2px] border-[#F1E9EA] dark:border-[#9E9E9E]`}>
+            <div className={` flex flex-col w-full  px-5 lg:px-11 dark:bg-[#141414] dark:border-t-[1px] border-t-[2px] border-[#F1E9EA] dark:border-[#9E9E9E]`}>
             <div className="flex  w-full py-6 gap-2 items-center  justify-start">
               <div className="border-l-4 border-[#f1e23d] h-8 rounded-full">
                 {" "}
               </div>
-              <h1 className="text-[30px] font-medium text-2xl dark:text-[#FFFFFF]">Top cast</h1>
+              <h1 className="text-[20px] lg:text-[30px] font-medium text-2xl dark:text-[#FFFFFF]">Top cast</h1>
               <p className="text-[15px] mt-1 font-light text-xs dark:text-[#9E9E9E]">
                 {data?.main?.cast?.total}
               </p>
@@ -294,8 +290,8 @@ function SingleMovie() {
                 className="  mt-1"
               />
             </div>
-            <div className=" grid grid-cols-3 gap-4 ">{castInfo}</div>
-          </div> */}
+            <div className="flex flex-row lg:grid lg:grid-cols-3 gap-4 overflow-x-auto hide-scrollbar mb-8">{castInfo}</div>
+          </div>
           </div>
         )}
       </div>
