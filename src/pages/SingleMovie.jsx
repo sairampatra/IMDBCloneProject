@@ -41,13 +41,13 @@ function SingleMovie() {
   ));
   let ratingsInfo = function ({ data }) {
     return (
-      <div className=" ratings_area lg:items-start items-center justify-center flex gap-5 mt-1 text-xs dark:text-[#FFFFFF] text-[#171212] ">
+      <div className=" ratings_area md:items-start  lg:items-start items-center justify-center flex gap-5 mt-1 text-xs dark:text-[#FFFFFF] text-[#171212] ">
         {data?.short?.aggregateRating != null ? (
           <div className=" rating flex flex-col m-2 items-center ">
             <h3>IMDb RATING</h3>
             <div className="flex items-start gap-2 mt-1">
               <FaStar color="yellow" size={23} />
-              <div className="flex items-center lg:flex-col leading-5 lg:gap-0 gap-3">
+              <div className="flex items-center md:flex-col lg:flex-col leading-5 md:gap-0 lg:gap-0 gap-3">
                 <div className="flex items-center">
                   <span className="text-lg font-medium">
                     {data?.short?.aggregateRating?.ratingValue}
@@ -77,7 +77,7 @@ function SingleMovie() {
     return (
       <div className="poster h-full  overflow-hidden">
         <img
-          className="w-full h-full object-cover lg:rounded-xl"
+          className="w-full h-full object-cover md:rounded-xl lg:rounded-xl"
           src={data?.short?.image}
           alt="noimage"
         />
@@ -198,30 +198,30 @@ function SingleMovie() {
                     {genre}
                   </ul>
                 </div>
-                <div className="hidden  lg:block">{ratingsInfo({ data })}</div>
+                <div className="hidden md:block lg:block">{ratingsInfo({ data })}</div>
               </div>
-              <div className=" h-[12rem] xl:h-[30rem]  lg:grid w-full lg:grid-cols-[1.2fr,3fr,1fr] lg:h-[24rem] mt-2 gap-2    box-border">
-                <div className="hidden lg:block">{posterImage({ data })}</div>
+              <div className=" h-[12rem] md:grid md:grid-cols-[1.199fr,3fr] md:h-[24rem]  xl:h-[30rem]  lg:grid w-full lg:grid-cols-[1.2fr,3fr,1fr] lg:h-[24rem] mt-2 gap-2    box-border">
+                <div className="hidden md:block lg:block">{posterImage({ data })}</div>
                 <div className=" trailerVideo w-full h-full overflow-hidden ">
                   {videoLoading ? (
-                    <div className="text-[black] dark:text-white w-full h-full flex justify-center items-center border rounded-none  lg:rounded-xl">
+                    <div className="text-[black] dark:text-white w-full h-full flex justify-center items-center border rounded-none md:rounded-xl  lg:rounded-xl">
                       <p>Loading trailer...</p>
                     </div>
                   ) : videoError ? (
-                    <div className="w-full h-full flex justify-center items-center border   text-[black] dark:text-white  lg:rounded-xl">
+                    <div className="w-full h-full flex justify-center items-center border   text-[black] dark:text-white md:rounded-xl  lg:rounded-xl">
                       ⚠️ Trailer not available for this movie.{" "}
                       {videoError.message}
                     </div>
                   ) : (
                     <video
-                      className="w-full h-full object-cover   lg:rounded-xl"
+                      className="w-full h-full object-cover md:rounded-xl  lg:rounded-xl"
                       src={videoData}
                       width="400"
                       controls
                     ></video>
                   )}
                 </div>
-                <div className="hidden lg:block">
+                <div className="hidden  lg:block">
                   <div className="   flex flex-col justify-between gap-1 w-full h-full">
                     <div className="videos bg-[#d9d8d8] text-[#171212] dark:bg-[#f0eaea5f] rounded-xl h-[50%] w-full flex justify-center items-center">
                       {data?.top?.videos?.total} videos
@@ -233,19 +233,19 @@ function SingleMovie() {
                 </div>
               </div>
               <div className="description flex items-start justify-center mt-2 gap-2">
-                <div className="lg:hidden  w-60">{posterImage({ data })}</div>
+                <div className="md:hidden lg:hidden  w-60">{posterImage({ data })}</div>
                 {data?.short?.description ? (
                   <div className="flex gap-2 mt-5 w-full text-sm text-[#171212] dark:text-[#FFFFFF]">
                     {parse(data?.short?.description)}
                   </div>
                 ) : null}
               </div>
-              <div className="lg:hidden">
+              <div className="md:hidden lg:hidden">
 
               {ratingsInfo({ data })}
               </div>
-              <div className=" mt-2 flex flex-col lg:flex-row w-full justify-between items-center  text-xs">
-                <div className="w-full lg:w-[65%]">
+              <div className=" mt-5 flex flex-col md:flex-row lg:flex-row w-full justify-between items-center  text-xs ">
+                <div className="w-full md:w-[65%]  lg:w-[65%]">
                   {directorName}
                   {data?.short?.creator?.length > 0 ? (
                     <div className="border-t-[1px] border-gray-400 w-full py-3 dark:text-[#9E9E9E] text-gray-400">
@@ -290,7 +290,7 @@ function SingleMovie() {
                 className="  mt-1"
               />
             </div>
-            <div className="flex flex-row lg:grid lg:grid-cols-3 gap-4 overflow-x-auto hide-scrollbar mb-8">{castInfo}</div>
+            <div className="flex flex-row md:grid md:grid-cols-2 md:overflow-x-visible   lg:grid lg:grid-cols-3 gap-4 overflow-x-auto hide-scrollbar mb-8">{castInfo}</div>
           </div>
           </div>
         )}
