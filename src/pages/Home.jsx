@@ -16,7 +16,6 @@ function Home() {
     cacheTime: 1000 * 60 * 30,
     refetchOnWindowFocus: false, // Prevent refetching when switching tabs
   });
-  // console.log(data);
   if (isError) return <h1>Error : {error.message}</h1>;
   return (
     <div className={`${theme}`}>

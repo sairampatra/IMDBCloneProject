@@ -1,17 +1,13 @@
-import { axiosInstance } from "../utils/axiosInstance"; 
+import { axiosInstance } from "../utils/axiosInstance";
 
 export async function fetchTrailerVideo(imdbId) {
   try {
-    // Set the responseType to 'blob' to handle binary data
-    const response = await axiosInstance.get(`/media/${imdbId}`, {
+    const response = await axiosInstance.get(`/?apikey=trilogy&i=${encodeURIComponent(imdbId)}`, {
       responseType: 'blob',
     });
-
-    const videoUrl = URL.createObjectURL(response.data);
-console.log(videoUrl)
-    return videoUrl;
+    return URL.createObjectURL(response.data);
   } catch (error) {
-    console.error('Error fetching the trailer video:', error);
-    throw error; // You can handle this error in your component
+    console.error('Error fetching trailer video:', error);
+    throw error;
   }
 }

@@ -1,5 +1,4 @@
-import React from "react";
-import Navbar from "./components/Navbar";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Routing from "./Routing";
 import { Slide, ToastContainer, toast } from "react-toastify";
